@@ -5,12 +5,13 @@ language: generic
 services:
   - docker
 
-before_install: 
-  - echo "start Creating an image with dockerfile"
+before_install:
+  - echo "start creating an image with dockerfile"
   - docker build -t nsd96/docker-react-app -f Dockerfile.dev .
 
-script:
+script: 
   - docker run -e CI=true nsd96/docker-react-app npm run test -- --coverage
-
+  
 after_success:
   - echo "Test success"
+
